@@ -1,4 +1,3 @@
-/* globals describe it expect */
 const Ship = require('../src/ship');
 
 describe('Ship', () => {
@@ -9,5 +8,16 @@ describe('Ship', () => {
         const ssTidal = new Ship('Dover')
 
         expect(ssTidal.startingPort).toBe('Dover');
+    });
+});
+
+describe('setSail', () => {
+    it('ship can set sail', () => {
+        const ssTidal = new Ship('Dover');
+
+        ssTidal.setSail();
+
+        expect(ssTidal.startingPort).toBeFalsy(); 
+        // i.e. not at the startingPort anymore// 
     });
 });
