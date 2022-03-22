@@ -17,12 +17,10 @@ describe('Ship', () => {
 
         expect(ssTidal.currentPort).toBe(port);
     });
-});
-
-describe('setSail', () => {
     it('ship can set sail', () => {
-        const port = new Port('Dover')
-        const itinerary = new Itinerary([port]);
+        const dover = new Port('Dover');
+        const calais = new Port('Calais');
+        const itinerary = new Itinerary([dover, calais]);
         const ssTidal = new Ship(itinerary);
 
         ssTidal.setSail();
@@ -42,5 +40,16 @@ describe('setSail', () => {
 
         expect(ship.currentPort).toBe(calais);
         // expect(ship.previousPort).toBe(dover); //
+    });
+    it('can\'t sail further than its itinerary', () => {
+        const dover = new Port('Dover');
+        const calais = new Port('Calais');
+        const itinerary = new Itinerary([dover, calais]);
+        const ssTidal = new Ship(itinerary);
+        
+        ssTidal.setSail();
+        ssTidal.dock();
+
+        expect(() => ssTidal.setSail()).toThrowError('End of itinerary reached');
     });
 });

@@ -6,6 +6,13 @@ class Ship {
     }
 
     setSail() {
+        const itinerary = this.itinerary;
+        const currentPortInex = itinerary.ports.indexOf(this.currentPort);
+    
+        if (currentPortInex === (itinerary.ports.length - 1)) {
+            throw new Error('End of itinerary reached');
+        }    
+
         this.previousPort = this.currentPort;
         this.currentPort = null;
     }
