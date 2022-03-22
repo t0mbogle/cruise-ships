@@ -32,14 +32,14 @@ describe('Ship', () => {
         const dover = new Port('Dover');
         const calais = new Port('Calais');
         const itinerary = new Itinerary([dover, calais]);
-        const ship = new Ship(itinerary);
+        const ssTidal = new Ship(itinerary);
 
-        ship.setSail();
-        ship.dock(); 
+        ssTidal.setSail();
+        ssTidal.dock(); 
         // no port arguement as ship docks at the next port on an itinerary.
 
-        expect(ship.currentPort).toBe(calais);
-        // expect(ship.previousPort).toBe(dover); //
+        expect(ssTidal.currentPort).toBe(calais);
+        expect(ssTidal.previousPort).toBe(dover);
     });
     it('can\'t sail further than its itinerary', () => {
         const dover = new Port('Dover');
