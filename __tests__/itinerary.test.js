@@ -7,8 +7,11 @@ describe('itinerary', () => {
         expect(new Itinerary).toBeInstanceOf(Object);
     });
     it('checks the new Itinerary object has a property name', () => {
-        const itinerary = new Itinerary('Calais')
+        const dover = new Port('Dover');
+        const calais = new Port('Calais');
+        
+        const itinerary = new Itinerary([dover, calais])
 
-        expect(itinerary.portsItinerary).toEqual('Calais');
+        expect(itinerary.ports).toEqual([dover, calais]);
     });
 });
