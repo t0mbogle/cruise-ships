@@ -14,13 +14,13 @@ describe('port', () => {
 });
 
 describe('addShip', () => {
-    it('a ship can be added to the port', () => {
+    it('ship can be added to port', () => {
         const port = new Port('Dover');
-        const ship = {};
+        const ssTidal = {};
 
-        port.addShip(ship)
+        port.addShip(ssTidal)
         
-        expect(port.ships).toContain(ship);
+        expect(port.ships).toContain(ssTidal);
     });
     /*
     it('ship gets added to port on instantiation', () => {
@@ -38,10 +38,16 @@ describe('addShip', () => {
     */
 });
 
-/*
 describe('removeShip', () => {
-    it('a ship can be removed from the port', () => {
+    it('ship can be removed from port', () => {
+        const port = new Port('Dover');
+        const titanic = {};
+        const ssTidal = {};
 
+        port.addShip(titanic);
+        port.addShip(ssTidal);
+        port.removeShip(ssTidal);
+        
+        expect(port.ships).toEqual([titanic]);
     });
 });
-*/

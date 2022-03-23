@@ -9,12 +9,10 @@ class Port {
         this.ships.push(ship);
     }
 
-    /*
-    removeShip() {
-        this.ship.pop(** shipName **)
-        - OR .slice() to return new array without certain elements.
+    removeShip(ship) {
+        this.ships.pop(ship);
     }
-    */
+
 }
 
 
