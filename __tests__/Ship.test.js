@@ -24,6 +24,8 @@ describe('Ship', () => {
 
         expect(ssTidal.currentPort).toBe(port);
     });
+
+    
     it('ship can set sail', () => {
         const dover = new Port('Dover');
         const calais = new Port('Calais');
@@ -33,10 +35,10 @@ describe('Ship', () => {
         ssTidal.setSail();
 
         expect(ssTidal.currentPort).toBeFalsy();
-        // i.e. not at the startingPort anymore 
+        expect(ssTidal.previousPort).toBe(dover);
+        expect(dover.ships[0]).not.toContain(ssTidal);
+        // i.e. not at the startingPort anymore
     });
-
-
 
 
     it('can dock at a different port', () => {
@@ -53,10 +55,6 @@ describe('Ship', () => {
         expect(ssTidal.previousPort).toBe(dover);
         expect(calais.ships).toContain(ssTidal);
     });
-
-
-
-
     it('can\'t sail further than its itinerary', () => {
         const dover = new Port('Dover');
         const calais = new Port('Calais');
