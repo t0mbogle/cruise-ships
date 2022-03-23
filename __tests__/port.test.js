@@ -22,20 +22,6 @@ describe('addShip', () => {
         
         expect(port.ships).toContain(ssTidal);
     });
-    /*
-    it('ship gets added to port on instantiation', () => {
-        const dover = new Ship('Dover');
-        const calais = new Ship('Calais');
-        const itinerary = new Itinerary([ports]);
-        const ssTidal = new Ship(itinerary);
-
-        ssTidal.setSail();
-        ssTida;.dock();
-
-
-        expect(ssTidal.currentPort.ship).toBe();
-    });
-    */
 });
 
 describe('removeShip', () => {

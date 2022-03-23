@@ -10,6 +10,13 @@ describe('Ship', () => {
 
         expect(ssTidal).toBeInstanceOf(Object);
     });
+    it('ship gets added to port on instantiation', () => {
+        const dover = new Port('Dover');
+        const itinerary = new Itinerary([dover]);
+        const ssTidal = new Ship(itinerary);
+
+        expect(dover.ships).toContain(ssTidal);
+    });
     it('has a starting port', () => {     
         const port = new Port('Dover');
         const itinerary = new Itinerary([port]);
@@ -28,6 +35,10 @@ describe('Ship', () => {
         expect(ssTidal.currentPort).toBeFalsy();
         // i.e. not at the startingPort anymore 
     });
+
+
+
+
     it('can dock at a different port', () => {
         const dover = new Port('Dover');
         const calais = new Port('Calais');
@@ -40,7 +51,12 @@ describe('Ship', () => {
 
         expect(ssTidal.currentPort).toBe(calais);
         expect(ssTidal.previousPort).toBe(dover);
+        expect(calais.ships).toContain(ssTidal);
     });
+
+
+
+
     it('can\'t sail further than its itinerary', () => {
         const dover = new Port('Dover');
         const calais = new Port('Calais');
