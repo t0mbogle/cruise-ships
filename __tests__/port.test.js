@@ -3,37 +3,41 @@ const Port = require('../src/port');
 const Itinerary = require('../src/itinerary');
 
 describe('port', () => {
-    it('can be instantiated', () => {
-        expect(new Port).toBeInstanceOf(Object);
-    });
-    it('checks the new Port object has a name property', () => {
-        const port = new Port('Calais')
+    describe('ports have ships arriving and leaving', () => {
+        let dover;
+        let titanic;
+        let ssTidal;
 
-        expect(port.portName).toEqual('Calais');
+        beforeEach(() => {
+            dover = new Port('Dover');
+            titanic = {};
+            ssTidal = {};
+        });
+
+        it('can be instantiated', () => {
+            expect(new Port).toBeInstanceOf(Object);
+        });
+
+        it('checks the new Port object has a name property', () => {
+    
+            expect(dover.portName).toEqual('Dover');
+        });
+
+        it('ship can be added to port', () => {
+    
+            dover.addShip(ssTidal)
+            
+            expect(dover.ships).toContain(ssTidal);
+        });
+
+        it('ship can be removed from port', () => {
+    
+            dover.addShip(titanic);
+            dover.addShip(ssTidal);
+            dover.removeShip(ssTidal);
+            
+            expect(dover.ships).toEqual([titanic]);
+        });
     });
 });
 
-describe('addShip', () => {
-    it('ship can be added to port', () => {
-        const port = new Port('Dover');
-        const ssTidal = {};
-
-        port.addShip(ssTidal)
-        
-        expect(port.ships).toContain(ssTidal);
-    });
-});
-
-describe('removeShip', () => {
-    it('ship can be removed from port', () => {
-        const port = new Port('Dover');
-        const titanic = {};
-        const ssTidal = {};
-
-        port.addShip(titanic);
-        port.addShip(ssTidal);
-        port.removeShip(ssTidal);
-        
-        expect(port.ships).toEqual([titanic]);
-    });
-});

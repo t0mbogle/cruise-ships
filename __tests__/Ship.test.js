@@ -15,14 +15,17 @@ describe('Ship', () => {
             itinerary = new Itinerary([dover, calais]);
             ssTidal = new Ship(itinerary);
         });
+
         it('can be instantiated', () => {
     
             expect(ssTidal).toBeInstanceOf(Object);
         });
+
         it('has a starting port', () => {
     
             expect(ssTidal.currentPort).toBe(dover);
         });
+
         it('ship can set sail', () => {
     
             ssTidal.setSail();
@@ -32,10 +35,12 @@ describe('Ship', () => {
             expect(ssTidal.previousPort).toBe(dover);
             expect(dover.ships[0]).not.toContain(ssTidal);
         });
+
         it('ship gets added to port on instantiation', () => {
     
             expect(dover.ships).toContain(ssTidal);
         });
+
         it('can dock at a different port', () => {
             
             ssTidal.setSail();
@@ -46,6 +51,7 @@ describe('Ship', () => {
             expect(ssTidal.previousPort).toBe(dover);
             expect(calais.ships).toContain(ssTidal);
         });
+
         it('can\'t sail further than its itinerary', () => {
             
             ssTidal.setSail();
@@ -53,7 +59,5 @@ describe('Ship', () => {
     
             expect(() => ssTidal.setSail()).toThrowError('End of itinerary reached');
         });
-        
     });  
-
 });
