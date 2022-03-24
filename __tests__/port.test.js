@@ -10,8 +10,8 @@ describe('port', () => {
 
         beforeEach(() => {
             dover = new Port('Dover');
-            titanic = {};
-            ssTidal = {};
+            titanic = jest.fn();
+            ssTidal = jest.fn();
         });
 
         it('can be instantiated', () => {
@@ -23,14 +23,14 @@ describe('port', () => {
             expect(dover.portName).toEqual('Dover');
         });
 
-        it('ship can be added to port', () => {
+        it('can add a ship to port', () => {
     
             dover.addShip(ssTidal)
             
             expect(dover.ships).toContain(ssTidal);
         });
 
-        it('ship can be removed from port', () => {
+        it('can remove a ship from port', () => {
     
             dover.addShip(titanic);
             dover.addShip(ssTidal);
