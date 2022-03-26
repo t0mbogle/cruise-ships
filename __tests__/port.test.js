@@ -10,6 +10,7 @@ describe('port', () => {
 
         beforeEach(() => {
             dover = new Port('Dover');
+            calais = new Port('Calais');
             titanic = jest.fn();
             ssTidal = jest.fn();
         });

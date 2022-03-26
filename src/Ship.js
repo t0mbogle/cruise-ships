@@ -15,7 +15,11 @@ class Ship {
         }    
 
         this.previousPort = this.currentPort;
+        // after setting sail, reassign last port visited to previous port
+        this.previousPort.removeShip(this);
+        // once ship has set sail, remove ship from the previous port.
         this.currentPort = null;
+        // current port is null becasue ship is not docked
     }
 
     dock() {
