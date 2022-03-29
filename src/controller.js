@@ -1,4 +1,5 @@
-function Controller() {
+(function exportController() {
+    function Controller() {
     this.initialiseSea();
 }
 
@@ -15,3 +16,10 @@ Controller.prototype = {
     }, 1000);
   }
 }
+
+  if(typeof module !== 'undefined' && module.exports) {
+        module.exports = Controller;
+    } else {
+        window.Controller = Controller;
+    }
+}());
