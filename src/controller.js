@@ -36,7 +36,18 @@ Controller.prototype = {
         /* how much the screen extends per new port element. It is able 
         to do this because of #viewport overview-x: auto; in the CSS file :) */
       });
+    },
+
+    renderShip(ship) {
+        const shipPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
+        const portElement = document.querySelector(`[data-port-index='${shipPortIndex}']`);
+
+        const shipElement = document.querySelector('#ship');
+        shipElement.style.top = `${portElement.offsetTop + 30}px`;
+        shipElement.style.left = `${portElement.offsetLeft - 32}px`;
+        // ship renders in a certain number of pixels from the top and left
     }
+
 }
 
   if(typeof module !== 'undefined' && module.exports) {
