@@ -5,13 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cruise Ships</title>
-    
+
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="viewport">
         <div id="ports"></div>
         <div id="ship"></div>
+        <button id="sailButton">Set Sail!</button>
     </div>
 
     <script src="src/controller.js"></script>
@@ -20,7 +24,6 @@
     <script src="src/itinerary.js"></script>
     
     <script>
-        const controller = new Controller();
         const itinerary = new Itinerary([
             new Port('Dover'),
             new Port('Calais'),
@@ -28,6 +31,9 @@
             new Port('Hong Kong')
         ]);
         const ship = new Ship(itinerary);
+        const controller = new Controller(ship);
+        // order has been shifted as it is read top to bottom
+
         controller.renderPorts(itinerary.ports);
         controller.renderShip(ship);
     </script>

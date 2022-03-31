@@ -1,7 +1,12 @@
 (function exportController() {
-    function Controller() {
-    this.initialiseSea();
-}
+    function Controller(ship) {
+        this.ship = ship;
+        this.initialiseSea();
+
+        document.querySelector('#sailButton').addEventListener('click', () => {
+            this.setSail();
+        });
+    }
 
 Controller.prototype = {
     initialiseSea() {
@@ -38,7 +43,9 @@ Controller.prototype = {
       });
     },
 
-    renderShip(ship) {
+    renderShip() {
+        const ship = this.ship;
+
         const shipPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
         const portElement = document.querySelector(`[data-port-index='${shipPortIndex}']`);
 
@@ -46,6 +53,33 @@ Controller.prototype = {
         shipElement.style.top = `${portElement.offsetTop + 30}px`;
         shipElement.style.left = `${portElement.offsetLeft - 32}px`;
         // ship renders in a certain number of pixels from the top and left
+    },
+
+    setSail() {
+        const ship = this.ship;
+
+        const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
+        const nextPortIndex = currentPortIndex + 1;
+        const nextPortElement = document.querySelector(`[data-port-index='${nextPortIndex}']`);
+        
+        if (!nextPortElement) {
+            return alert('End of the cruise!');
+            // return alert if there is not a next port
+        }
+
+        const shipElement = document.querySelector('#ship');
+        const sailInterval = setInterval(() => {
+            const shipLeft = parseInt(shipElement.style.left, 10);
+            if(shipLeft === (nextPortElement.offsetLeft - 32)) {
+                ship.setSail();
+                ship.dock();
+                clearInterval(sailInterval);
+                // offsetLeft is reset after docking so that the ship is then moving 
+                // further lefdt away from the last visited port
+            }
+
+            shipElement.style.left = `${shipLeft + 1}px`;
+        }, 20);
     }
 
 }
