@@ -70,8 +70,7 @@ body {
     font-family: 'VT323', monospace;
 }
 
-/*
-#headsUpDisplay { // top of page flex container 
+#headsUpDisplay { /* top of page flex container */
     color: white;
     position: absolute;
     align-self: flex-start;
@@ -79,10 +78,9 @@ body {
     right: 5%;
 }
 
-#portInformation { // top of page flex div 
+#portInformation { /* top of page flex div */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     font-family: 'VT323', monospace;
 }
-*/
