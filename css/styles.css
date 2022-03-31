@@ -48,11 +48,41 @@ body {
     left: 0;
     width: 100%;
     height: 30px;
-    overflow-x: auto;
 }
 
-#sailButton:focus {
+#sailButton:hover {
     background-color: #d8040f;
     border-bottom-width: 0;
     color: white;
 }
+
+#message {
+    border: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    font-size: 23px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-family: 'VT323', monospace;
+}
+
+/*
+#headsUpDisplay { // top of page flex container 
+    color: white;
+    position: absolute;
+    align-self: flex-start;
+    width: 40%;
+    right: 5%;
+}
+
+#portInformation { // top of page flex div 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: 'VT323', monospace;
+}
+*/

@@ -55,6 +55,21 @@ Controller.prototype = {
         // ship renders in a certain number of pixels from the top and left
     },
 
+    renderMessage(message) {
+        const newMessageElement = document.createElement('div');
+        newMessageElement.id = 'message';
+        // .id references the id in the css doc
+        newMessageElement.innerHTML = message;
+
+        const viewport = document.querySelector('#viewport');
+        viewport.appendChild(newMessageElement);
+
+        setTimeout(() => {
+            viewport.removeChild(newMessageElement)
+        }, 2500);
+
+    },
+
     setSail() {
         const ship = this.ship;
 
@@ -63,8 +78,10 @@ Controller.prototype = {
         const nextPortElement = document.querySelector(`[data-port-index='${nextPortIndex}']`);
         
         if (!nextPortElement) {
-            return alert('End of the cruise!');
+            this.renderMessage(`You've reached the end of the cruise!`);
             // return alert if there is not a next port
+        } else {
+            this.renderMessage(`Leaving ${ship.currentPort.portName} and setting sail for ${ship.itinerary.ports[currentPortIndex +1].portName}!`);
         }
 
         const shipElement = document.querySelector('#ship');
@@ -80,6 +97,11 @@ Controller.prototype = {
 
             shipElement.style.left = `${shipLeft + 1}px`;
         }, 20);
+
+        setTimeout(() => {
+            const nextPort =
+            this.renderMessage(`Arriving soon at ${ship.itinerary.ports[currentPortIndex + 1].portName}!`);
+        }, 3750);
     }
 
 }
